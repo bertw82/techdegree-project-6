@@ -41,3 +41,16 @@ function addPhraseToDisplay(arr) {
 }
 
 addPhraseToDisplay(phraseArray);
+
+function checkLetter(e) {
+  let letters = document.getElementsByClassName('letter');
+  for ( let i = 0; i < letters.length; i++) {
+    if ( e === [i] ) {
+      letters[i].className = 'show';
+      let letterMatch = letters[i];
+      return letterMatch;
+    } else {
+      return null;
+    }
+  }
+}
