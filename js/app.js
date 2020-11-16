@@ -16,3 +16,11 @@ const phrases = [
   'Percussion instruments include anything that is struck',
   'The harp is always plucked'
 ];
+
+function getRandomPhraseAsArray(x) {
+  // randomly choose a phrase and split that phrase into a new array of characters. Return the new character array.
+  const randomNumber = Math.floor(Math.random() * phrases.length);
+  return phrases[randomNumber];
+}
+
+getRandomPhraseAsArray(phrases);
