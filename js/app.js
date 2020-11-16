@@ -17,10 +17,17 @@ const phrases = [
   'The harp is always plucked'
 ];
 
-function getRandomPhraseAsArray(x) {
+function getRandomPhraseAsArray(arr) {
   // randomly choose a phrase and split that phrase into a new array of characters. Return the new character array.
   const randomNumber = Math.floor(Math.random() * phrases.length);
   return phrases[randomNumber];
 }
 
-getRandomPhraseAsArray(phrases);
+const phraseArray = getRandomPhraseAsArray(phrases);
+
+function addPhraseToDisplay(arr) {
+  // loop through array of characters, create and append a list item to html
+  for ( let i = 0; i < arr.length; i++) {
+    arr[i]
+  }
+}
