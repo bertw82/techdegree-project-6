@@ -10,11 +10,11 @@ overlay.addEventListener('click', (e) =>{
 });
 
 const phrases = [
-  'Stringed instruments are played with a bow',
-  'Woodwind instruments are mostly made of wood',
-  'Brass instruments are made of metal',
-  'Percussion instruments include anything that is struck',
-  'The harp is always plucked'
+  'Ludwig Van Beethoven',
+  'Wolfgang Amadeus Mozart',
+  'Igor Stravinsky',
+  'Pyotr Ilyich Tchaikovsky',
+  'Johann Sebastian Bach'
 ];
 
 function getRandomPhraseAsArray(arr) {
@@ -28,6 +28,16 @@ const phraseArray = getRandomPhraseAsArray(phrases);
 function addPhraseToDisplay(arr) {
   // loop through array of characters, create and append a list item to html
   for ( let i = 0; i < arr.length; i++) {
-    arr[i]
+    let character = arr[i].toLowerCase();
+    let listItem = document.createElement('li');
+    listItem.textContent = character;
+    phrase.appendChild(listItem);
+    if (character === " ") {
+      listItem.className = 'space';
+    } else {
+      listItem.className = 'letter';
+    }
   }
 }
+
+addPhraseToDisplay(phraseArray);
