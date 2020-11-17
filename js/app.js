@@ -1,6 +1,6 @@
 const qwerty = document.getElementById('qwerty');
 const phrase = document.getElementById('phrase');
-const missed = 0;
+let missed = 0;
 
 const overlay = document.getElementById('overlay');
 overlay.addEventListener('click', (e) =>{
@@ -13,7 +13,7 @@ const phrases = [
   'Ludwig Van Beethoven',
   'Wolfgang Amadeus Mozart',
   'Igor Stravinsky',
-  'Pyotr Ilyich Tchaikovsky',
+  'Gustav Mahler',
   'Johann Sebastian Bach'
 ];
 
@@ -43,14 +43,15 @@ function addPhraseToDisplay(arr) {
 addPhraseToDisplay(phraseArray);
 
 function checkLetter(x) {
+  // check button letter against letter in phrase
   let li = document.getElementsByClassName('letter');
   for ( let i = 0; i < li.length; i++) {
     if ( x.textContent.toLowerCase() === li[i].textContent.toLowerCase() ) {
       li[i].className = 'show letter';
-    //   let letterMatch = letters[i];
-    //   return letterMatch;
+      let letterMatch = li[i].textContent;
+      letterMatch;
     } else {
-      console.log('null');
+      null;
     }
   }
 }
@@ -61,5 +62,12 @@ qwerty.addEventListener('click', (e) => {
     button.className = 'chosen';
     button.disabled = true;
     let letterFound = checkLetter(button);
+    if ( letterFound === null) {
+      let scoreBoard = document.getElementById('scoreboard');
+      let ol = scoreBoard.firstElementChild;
+      let li = ol.firstElementChild;
+      ol.removeChild(li);
+      missed += 1;
+    }
   }
 })
