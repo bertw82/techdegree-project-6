@@ -42,15 +42,24 @@ function addPhraseToDisplay(arr) {
 
 addPhraseToDisplay(phraseArray);
 
-function checkLetter(e) {
-  let letters = document.getElementsByClassName('letter');
-  for ( let i = 0; i < letters.length; i++) {
-    if ( e === [i] ) {
-      letters[i].className = 'show';
-      let letterMatch = letters[i];
-      return letterMatch;
+function checkLetter(x) {
+  let li = document.getElementsByClassName('letter');
+  for ( let i = 0; i < li.length; i++) {
+    if ( x.textContent.toLowerCase() === li[i].textContent.toLowerCase() ) {
+      li[i].className = 'show letter';
+    //   let letterMatch = letters[i];
+    //   return letterMatch;
     } else {
-      return null;
+      console.log('null');
     }
   }
 }
+
+qwerty.addEventListener('click', (e) => {
+  if (e.target.tagName === 'BUTTON') {
+    let button = e.target;
+    button.className = 'chosen';
+    button.disabled = true;
+    let letterFound = checkLetter(button);
+  }
+})
