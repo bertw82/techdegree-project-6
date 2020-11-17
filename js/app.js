@@ -44,16 +44,15 @@ addPhraseToDisplay(phraseArray);
 
 function checkLetter(x) {
   // check button letter against letter in phrase
-  let li = document.getElementsByClassName('letter');
-  for ( let i = 0; i < li.length; i++) {
-    if ( x.textContent.toLowerCase() === li[i].textContent.toLowerCase() ) {
-      li[i].className = 'show letter';
-      let letterMatch = li[i].textContent;
-      return letterMatch;
-    } else {
-      return null;
-    }
+  let checkLetter = document.getElementsByClassName('letter');
+  let letterMatch = null;
+  for ( let i = 0; i < checkLetter.length; i++) {
+    if ( x.textContent.toLowerCase() === checkLetter[i].textContent.toLowerCase() ) {
+      checkLetter[i].className = 'show letter';
+      letterMatch = checkLetter[i].textContent;     
+    }    
   }
+  return letterMatch;
 }
 
 qwerty.addEventListener('click', (e) => {
@@ -69,5 +68,22 @@ qwerty.addEventListener('click', (e) => {
       ol.removeChild(li);
       missed += 1;
     }
+    checkWin();
   }
 })
+
+function checkWin() {
+  const letter = document.getElementsByClassName('letter');
+  const show = document.getElementsByClassName('show');
+  if ( letter.length === show.length) {
+    overlay.className = 'win';
+    overlay.style.display = 'flex';
+    overlay.innerHTML = `<h2>Congrats, you won!</h2>`;
+  } else if ( missed >= 5 ){
+    overlay.className = 'lose';
+    overlay.style.display = 'flex';
+    overlay.innerHTML = `<h2>Game Over. Please try again.</h2>`;
+  }
+}
+
+

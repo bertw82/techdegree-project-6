@@ -61,6 +61,7 @@ button {
   -webkit-transition: var(--transition);
   -o-transition: var(--transition);
   transition: var(--transition);
+  text-transform: uppercase;
 }
 
 .main-container {
@@ -94,6 +95,7 @@ button {
   color: transparent;
   background: var(--color-neutral-light);
   border-radius: 5px;
+  text-transform: uppercase;
 }
 
 .space {
