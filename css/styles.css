@@ -44,6 +44,12 @@ h2 {
   margin: 0;
 }
 
+p {
+  font-size: 1.3125rem;
+  width: 600px;
+  margin: 40px auto 0;
+}
+
 button {
   margin: 6px;
   border: 1px solid transparent;

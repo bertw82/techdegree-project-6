@@ -49,9 +49,9 @@ function checkLetter(x) {
     if ( x.textContent.toLowerCase() === li[i].textContent.toLowerCase() ) {
       li[i].className = 'show letter';
       let letterMatch = li[i].textContent;
-      letterMatch;
+      return letterMatch;
     } else {
-      null;
+      return null;
     }
   }
 }
