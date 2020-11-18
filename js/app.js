@@ -1,5 +1,6 @@
 const qwerty = document.getElementById('qwerty');
 const phrase = document.getElementById('phrase');
+const ul = phrase.firstElementChild;
 let missed = 0;
 
 const overlay = document.getElementById('overlay');
@@ -31,7 +32,7 @@ function addPhraseToDisplay(arr) {
     let character = arr[i].toLowerCase();
     let listItem = document.createElement('li');
     listItem.textContent = character;
-    phrase.appendChild(listItem);
+    ul.appendChild(listItem);
     if (character === " ") {
       listItem.className = 'space';
     } else {
@@ -62,9 +63,9 @@ qwerty.addEventListener('click', (e) => {
     button.disabled = true;
     let letterFound = checkLetter(button);
     if ( letterFound === null) {
-      let scoreBoard = document.getElementById('scoreboard');
-      let ol = scoreBoard.firstElementChild;
-      let li = ol.firstElementChild;
+      const scoreBoard = document.getElementById('scoreboard');
+      const ol = scoreBoard.firstElementChild;
+      const li = ol.firstElementChild;
       ol.removeChild(li);
       missed += 1;
     }
@@ -75,15 +76,43 @@ qwerty.addEventListener('click', (e) => {
 function checkWin() {
   const letter = document.getElementsByClassName('letter');
   const show = document.getElementsByClassName('show');
+  const h2 = document.querySelector('.title');
+  const p = document.querySelector('.directions');
+  const a = overlay.lastElementChild;
   if ( letter.length === show.length) {
     overlay.className = 'win';
     overlay.style.display = 'flex';
-    overlay.innerHTML = `<h2>Congrats, you won!</h2>`;
+    h2.innerHTML = `Congrats, you won!`;
+    p.innerHTML = `You are a musical genius!`;
+    a.textContent = `Play again`;
+    gameReset();
   } else if ( missed >= 5 ){
     overlay.className = 'lose';
     overlay.style.display = 'flex';
-    overlay.innerHTML = `<h2>Game Over. Please try again.</h2>`;
+    h2.innerHTML = `Game Over. Please try again`;
+    p.innerHTML = '';
+    a.textContent = `Play again`;
+    gameReset();
   }
 }
 
-
+function gameReset() {
+  const button = document.getElementsByTagName('button');
+  const li = document.getElementsByClassName('letter');
+  for ( let i = 0; i < button.length; i++) {
+    button[i].classList.remove('chosen');
+    button[i].disabled = false;
+  }
+  for ( let i = 0; i < li.length; i++ ) {
+    li[i].classList.remove('show');
+  }
+  function removeAllLi(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
+  }
+  removeAllLi(ul);
+  const phraseArray = getRandomPhraseAsArray(phrases);
+  addPhraseToDisplay(phraseArray);
+  missed = 0;
+}
