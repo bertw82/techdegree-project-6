@@ -59,6 +59,7 @@ function checkLetter(x) {
 }
 
 qwerty.addEventListener('click', (e) => {
+  // remove heart if guessed wrong
   if (e.target.tagName === 'BUTTON') {
     let button = e.target;
     button.className = 'chosen';
@@ -68,21 +69,13 @@ qwerty.addEventListener('click', (e) => {
       missed += 1;
       const li = ol.firstElementChild;
       ol.removeChild(li);
-      // let liHeart = document.getElementsByClassName('tries');
-      // let image = document.getElementsByTagName('img');     
-      // for ( let i = 0; i < image.length; i++) {
-        
-      //   let lostHeart = image[i];
-      //   if (missed === i ) {
-      //     lostHeart.src = 'images/liveHeart.png';
-      //   }
-      // }
     }
     checkWin();
   }
 })
 
 function checkWin() {
+  // function to check if win or lose
   const letter = document.getElementsByClassName('letter');
   const show = document.getElementsByClassName('show');
   const h2 = document.querySelector('.title');
@@ -106,6 +99,7 @@ function checkWin() {
 }
 
 function gameReset() {
+  // function to reset the game
   const button = document.getElementsByTagName('button');
   const li = document.getElementsByClassName('letter');
   for ( let i = 0; i < button.length; i++) {
@@ -116,12 +110,14 @@ function gameReset() {
     li[i].classList.remove('show');
   }
   function removeAllLi(parent) {
+    // function to remove previous letter li's
     while (parent.firstChild) {
         parent.removeChild(parent.firstChild);
     }
   }
   removeAllLi(ul);
   function createNewHearts() {
+    // function to create new hearts
     const li = document.createElement('li');
     li.className = 'tries';
     const image = document.createElement('img');
