@@ -1,6 +1,8 @@
 const qwerty = document.getElementById('qwerty');
 const phrase = document.getElementById('phrase');
 const ul = phrase.firstElementChild;
+const scoreBoard = document.getElementById('scoreboard');
+const ol = scoreBoard.firstElementChild;
 let missed = 0;
 
 const overlay = document.getElementById('overlay');
@@ -63,8 +65,8 @@ qwerty.addEventListener('click', (e) => {
     button.disabled = true;
     let letterFound = checkLetter(button);
     if ( letterFound === null) {
-      const scoreBoard = document.getElementById('scoreboard');
-      const ol = scoreBoard.firstElementChild;
+      // const scoreBoard = document.getElementById('scoreboard');
+      // const ol = scoreBoard.firstElementChild;
       const li = ol.firstElementChild;
       ol.removeChild(li);
       missed += 1;
@@ -112,6 +114,18 @@ function gameReset() {
     }
   }
   removeAllLi(ul);
+  // function createNewHearts() {
+  //   const li = document.createElement('li');
+  //   const image = document.createElement('img');
+  //   image.src = 'images/liveHeart.png';
+  //   image.style.height = '35px';
+  //   image.style.width = '30px';
+  //   li.appendChild(image);
+  //   ol.appendChild(li);
+  // }
+  // for (let i = 0; i < 5; i++) {
+  //   createNewHearts();
+  // }
   const phraseArray = getRandomPhraseAsArray(phrases);
   addPhraseToDisplay(phraseArray);
   missed = 0;
