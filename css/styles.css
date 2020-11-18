@@ -179,10 +179,38 @@ button {
   color: var(--color-win);
 }
 
+.win a {
+  color: var(--color-win);
+  box-shadow: 3px 3px 2px 0px var(--color-neutral-light);
+}
+
+.win a:hover {
+  color: var(--color-neutral);
+}
+
+.win a:active {
+  color: var(--color-neutral);
+  box-shadow: inset 0 0 3px 0 rgba(0,0,0,.8);
+}
+
 .lose {
   background-color: var(--color-lose);
 }
 
 .lose a {
   color: var(--color-lose);
+  box-shadow: 3px 3px 2px 0px var(--color-neutral-light);
+}
+
+.lose a:hover {
+  color: var(--color-neutral);
+}
+
+.lose a:active {
+  color: var(--color-neutral);
+  box-shadow: inset 0 0 3px 0 rgba(0,0,0,.8);
+}
+
+.tries {
+  padding: 3px;
 }

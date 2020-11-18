@@ -65,11 +65,18 @@ qwerty.addEventListener('click', (e) => {
     button.disabled = true;
     let letterFound = checkLetter(button);
     if ( letterFound === null) {
-      // const scoreBoard = document.getElementById('scoreboard');
-      // const ol = scoreBoard.firstElementChild;
+      missed += 1;
       const li = ol.firstElementChild;
       ol.removeChild(li);
-      missed += 1;
+      // let liHeart = document.getElementsByClassName('tries');
+      // let image = document.getElementsByTagName('img');     
+      // for ( let i = 0; i < image.length; i++) {
+        
+      //   let lostHeart = image[i];
+      //   if (missed === i ) {
+      //     lostHeart.src = 'images/liveHeart.png';
+      //   }
+      // }
     }
     checkWin();
   }
@@ -93,7 +100,7 @@ function checkWin() {
     overlay.style.display = 'flex';
     h2.innerHTML = `Game Over. Please try again`;
     p.innerHTML = '';
-    a.textContent = `Play again`;
+    a.textContent = `Try again`;
     gameReset();
   }
 }
@@ -114,18 +121,37 @@ function gameReset() {
     }
   }
   removeAllLi(ul);
-  // function createNewHearts() {
-  //   const li = document.createElement('li');
-  //   const image = document.createElement('img');
-  //   image.src = 'images/liveHeart.png';
-  //   image.style.height = '35px';
-  //   image.style.width = '30px';
-  //   li.appendChild(image);
-  //   ol.appendChild(li);
-  // }
-  // for (let i = 0; i < 5; i++) {
-  //   createNewHearts();
-  // }
+  function createNewHearts() {
+    const li = document.createElement('li');
+    li.className = 'tries';
+    const image = document.createElement('img');
+    image.src = 'images/liveHeart.png';
+    image.style.height = '35px';
+    image.style.width = '30px';
+    li.appendChild(image);
+    ol.appendChild(li);
+  }
+  if (missed === 5) {
+    for (let i = 0; i < 5; i++) {
+      createNewHearts();
+    }
+  } else if (missed === 4) {
+    for (let i = 0; i < 4; i++) {
+      createNewHearts();
+    }
+  } else if (missed === 3) {
+    for (let i = 0; i < 3; i++) {
+      createNewHearts();
+    }
+  } else if (missed === 2) {
+    for (let i = 0; i < 2; i++) {
+      createNewHearts();
+    }
+  } else if (missed === 1) {
+    for (let i = 0; i < 1; i++) {
+      createNewHearts();
+    }
+  }
   const phraseArray = getRandomPhraseAsArray(phrases);
   addPhraseToDisplay(phraseArray);
   missed = 0;
