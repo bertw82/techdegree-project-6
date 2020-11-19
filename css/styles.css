@@ -79,6 +79,7 @@ button {
 .section {
   width: 100%;
   padding: 10px;
+  font-size: 0;
 }
 
 /* Title */
@@ -212,5 +213,7 @@ button {
 }
 
 .tries {
-  padding: 3px;
+  padding: 5px;
 }
+
+
