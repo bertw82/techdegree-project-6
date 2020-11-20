@@ -93,10 +93,10 @@ function checkWin() {
   const letter = document.getElementsByClassName('letter');
   const show = document.getElementsByClassName('show');
   if ( letter.length === show.length) {
-    gameEndDisplay('win', `Congrats, you won!`, `You are a musical genius!`, `Play again`)
+    gameEndDisplay('win', `Congrats, you won!`, `You are a musical genius!`, `Play again`);
     gameReset();
   } else if ( missed >= 5 ){
-    gameEndDisplay('lose', `Game Over. Please try again.`, '', `Try again`)
+    gameEndDisplay('lose', `Game Over. Please try again.`, '', `Try again`);
     gameReset();
   }
 }
