@@ -2,8 +2,9 @@ const qwerty = document.getElementById('qwerty');
 const phrase = document.getElementById('phrase');
 const ul = phrase.firstElementChild;
 const heartImage = document.getElementsByTagName('img');
-let missed = 0;
 const overlay = document.getElementById('overlay');
+let missed = 0;
+
 overlay.addEventListener('click', (e) =>{
   if (e.target.tagName === 'A') {
     overlay.style.display = 'none';
@@ -76,26 +77,26 @@ qwerty.addEventListener('click', (e) => {
   }
 })
 
+function gameEndDisplay(outcomeClass, outcomeMessage, pMessage, aText) {
+  const h2 = document.querySelector('.title');
+  const p = document.querySelector('.directions');
+  const a = overlay.lastElementChild;
+  overlay.className = outcomeClass;
+  overlay.style.display = 'flex';
+  h2.innerHTML = outcomeMessage;
+  p.innerHTML = pMessage;
+  a.textContent = aText;
+}
+
 function checkWin() {
   // function to check if win or lose
   const letter = document.getElementsByClassName('letter');
   const show = document.getElementsByClassName('show');
-  const h2 = document.querySelector('.title');
-  const p = document.querySelector('.directions');
-  const a = overlay.lastElementChild;
   if ( letter.length === show.length) {
-    overlay.className = 'win';
-    overlay.style.display = 'flex';
-    h2.innerHTML = `Congrats, you won!`;
-    p.innerHTML = `You are a musical genius!`;
-    a.textContent = `Play again`;
+    gameEndDisplay('win', `Congrats, you won!`, `You are a musical genius!`, `Play again`)
     gameReset();
   } else if ( missed >= 5 ){
-    overlay.className = 'lose';
-    overlay.style.display = 'flex';
-    h2.innerHTML = `Game Over. Please try again.`;
-    p.innerHTML = '';
-    a.textContent = `Try again`;
+    gameEndDisplay('lose', `Game Over. Please try again.`, '', `Try again`)
     gameReset();
   }
 }
