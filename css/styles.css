@@ -1,5 +1,4 @@
 /* Main styles */
-/* @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&Roboto:300'); */
 @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
@@ -39,8 +38,6 @@ li, ol, ul {
 
 h2 {
   margin: 0;
-  /* text-transform: uppercase; */
-  /* font-family: 'Open Sans', sans-serif; */
   font-family: 'Satisfy', cursive;
   font-size: var(--font-size-large);
   margin: 0;
@@ -79,7 +76,6 @@ button {
 .section {
   width: 100%;
   padding: 10px;
-  font-size: 0;
 }
 
 /* Title */
@@ -160,7 +156,6 @@ button {
 
 .start a {
   color: var(--color-win);
-  box-shadow: 3px 3px 2px 0px var(--color-win);
 }
 
 .start a:hover {
@@ -182,7 +177,6 @@ button {
 
 .win a {
   color: var(--color-win);
-  box-shadow: 3px 3px 2px 0px var(--color-neutral-light);
 }
 
 .win a:hover {
@@ -200,7 +194,6 @@ button {
 
 .lose a {
   color: var(--color-lose);
-  box-shadow: 3px 3px 2px 0px var(--color-neutral-light);
 }
 
 .lose a:hover {
@@ -210,10 +203,6 @@ button {
 .lose a:active {
   color: var(--color-neutral);
   box-shadow: inset 0 0 3px 0 rgba(0,0,0,.8);
-}
-
-.tries {
-  padding: 5px;
 }
 
 

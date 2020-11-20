@@ -2,7 +2,7 @@ const qwerty = document.getElementById('qwerty');
 const phrase = document.getElementById('phrase');
 const ul = phrase.firstElementChild;
 const scoreBoard = document.getElementById('scoreboard');
-const ol = scoreBoard.firstElementChild;
+const heartImg = document.querySelectorAll('.tries img');
 let missed = 0;
 
 const overlay = document.getElementById('overlay');
@@ -17,7 +17,12 @@ const phrases = [
   'Wolfgang Amadeus Mozart',
   'Igor Stravinsky',
   'Gustav Mahler',
-  'Johann Sebastian Bach'
+  'Johann Sebastian Bach',
+  'John Adams',
+  'Johannes Brahms',
+  'Maurice Ravel',
+  'Antonio Vivaldi',
+  'Joseph Haydn'
 ];
 
 function getRandomPhraseAsArray(arr) {
@@ -66,9 +71,8 @@ qwerty.addEventListener('click', (e) => {
     button.disabled = true;
     let letterFound = checkLetter(button);
     if ( letterFound === null) {
+      heartImg[missed].src = "images/lostHeart.png";
       missed += 1;
-      const li = ol.firstElementChild;
-      ol.removeChild(li);
     }
     checkWin();
   }
@@ -116,38 +120,12 @@ function gameReset() {
     }
   }
   removeAllLi(ul);
-  function createNewHearts() {
-    // function to create new hearts
-    const li = document.createElement('li');
-    li.className = 'tries';
-    const image = document.createElement('img');
-    image.src = 'images/liveHeart.png';
-    image.style.height = '35px';
-    image.style.width = '30px';
-    li.appendChild(image);
-    ol.appendChild(li);
-  }
-  if (missed === 5) {
-    for (let i = 0; i < 5; i++) {
-      createNewHearts();
-    }
-  } else if (missed === 4) {
-    for (let i = 0; i < 4; i++) {
-      createNewHearts();
-    }
-  } else if (missed === 3) {
-    for (let i = 0; i < 3; i++) {
-      createNewHearts();
-    }
-  } else if (missed === 2) {
-    for (let i = 0; i < 2; i++) {
-      createNewHearts();
-    }
-  } else if (missed === 1) {
-    for (let i = 0; i < 1; i++) {
-      createNewHearts();
+  function resetHearts() {
+    for (let i = 0; i < heartImg.length; i++) {
+      heartImg[i].src = 'images/liveHeart.png';
     }
   }
+  resetHearts();
   const phraseArray = getRandomPhraseAsArray(phrases);
   addPhraseToDisplay(phraseArray);
   missed = 0;
