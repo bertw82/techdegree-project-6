@@ -1,10 +1,8 @@
 const qwerty = document.getElementById('qwerty');
 const phrase = document.getElementById('phrase');
 const ul = phrase.firstElementChild;
-const scoreBoard = document.getElementById('scoreboard');
-const heartImg = document.querySelectorAll('.tries img');
+const heartImage = document.getElementsByTagName('img');
 let missed = 0;
-
 const overlay = document.getElementById('overlay');
 overlay.addEventListener('click', (e) =>{
   if (e.target.tagName === 'A') {
@@ -71,7 +69,7 @@ qwerty.addEventListener('click', (e) => {
     button.disabled = true;
     let letterFound = checkLetter(button);
     if ( letterFound === null) {
-      heartImg[missed].src = "images/lostHeart.png";
+      heartImage[missed].src = "images/lostHeart.png";
       missed += 1;
     }
     checkWin();
@@ -95,7 +93,7 @@ function checkWin() {
   } else if ( missed >= 5 ){
     overlay.className = 'lose';
     overlay.style.display = 'flex';
-    h2.innerHTML = `Game Over. Please try again`;
+    h2.innerHTML = `Game Over. Please try again.`;
     p.innerHTML = '';
     a.textContent = `Try again`;
     gameReset();
@@ -121,8 +119,9 @@ function gameReset() {
   }
   removeAllLi(ul);
   function resetHearts() {
-    for (let i = 0; i < heartImg.length; i++) {
-      heartImg[i].src = 'images/liveHeart.png';
+    // function to reset hearts back to liveHeart.png
+    for (let i = 0; i < heartImage.length; i++) {
+      heartImage[i].src = 'images/liveHeart.png';
     }
   }
   resetHearts();

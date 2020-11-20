@@ -96,6 +96,7 @@ button {
   background: var(--color-neutral-light);
   border-radius: 5px;
   text-transform: uppercase;
+  user-select: none;
 }
 
 .space {
