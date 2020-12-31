@@ -27,7 +27,7 @@ const phrases = [
 function getRandomPhraseAsArray(arr) {
   // randomly choose a phrase and split that phrase into a new array of characters. Return the new character array.
   const randomNumber = Math.floor(Math.random() * phrases.length);
-  return phrases[randomNumber];
+  return arr[randomNumber];
 }
 
 const phraseArray = getRandomPhraseAsArray(phrases);
